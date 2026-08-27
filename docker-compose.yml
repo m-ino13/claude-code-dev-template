@@ -1,0 +1,21 @@
+services:
+  claude:
+    build: .
+    container_name: claude
+    volumes:
+      # ssh keys and config for claude
+      - ./.ssh:/home/node/.ssh:ro
+      # claude config
+      - claude-config:/home/node/.claude
+      # project dir
+      - ./__PROJECT_NAME__:/home/node/__PROJECT_NAME__
+    environment:
+      # enable color
+      - TERM=xterm-256color
+      - DISABLE_AUTOUPDATER=1
+    stdin_open: true
+    tty: true
+    command: sleep infinity
+
+volumes:
+  claude-config:

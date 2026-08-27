@@ -1,0 +1,7 @@
+# Claude 専用 SSH 鍵（setup.sh が生成する）
+.ssh/id_*
+!.ssh/.gitkeep
+
+# クローンしてくるプロジェクト本体
+/__PROJECT_NAME__/*
+!/__PROJECT_NAME__/.gitkeep
