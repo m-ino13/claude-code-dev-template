@@ -1,7 +1,7 @@
 services:
   claude:
     build: .
-    container_name: claude
+    container_name: __PROJECT_NAME___claude
     volumes:
       # ssh keys and config for claude
       - ./.ssh:/home/node/.ssh:ro
