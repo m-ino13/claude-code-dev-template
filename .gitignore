@@ -1,5 +1,5 @@
 # SSHの鍵・known_hosts・configなど
-ssh/*
+.ssh/*
 !.ssh/.gitkeep
 
 # 実プロジェクト（setup.sh が git clone / git init する。別リポジトリなのでここでは追跡しない）
