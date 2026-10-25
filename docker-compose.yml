@@ -3,8 +3,8 @@ services:
     build: .
     container_name: __PROJECT_NAME___claude
     volumes:
-      # ssh keys and config for claude
-      - ./.ssh:/home/node/.ssh:ro
+      # ssh keys and config for claude (Claude専用。権限の大きい鍵は置かない)
+      - ./.ssh:/home/node/.ssh
       # claude config
       - claude-config:/home/node/.claude
       # project dir

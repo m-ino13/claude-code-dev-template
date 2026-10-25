@@ -1,5 +1,6 @@
-# Claude 専用 SSH 鍵（setup.sh が生成する）
-.ssh/id_*
+# SSHの鍵・known_hosts・configなど
+ssh/*
+!.ssh/.gitkeep
 
 # 実プロジェクト（setup.sh が git clone / git init する。別リポジトリなのでここでは追跡しない）
 /__PROJECT_NAME__/
