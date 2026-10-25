@@ -1,14 +1,15 @@
 FROM node:20-bookworm-slim
 
-RUN apt update && apt install -y \
+# curl / ca-certificates はネイティブインストーラの取得に必要
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
     openssh-client \
     git \
     sudo \
     vim-tiny \
-    && rm -rf /var/lib/apt/lists/*
-
-# install Claude Code CLI
-RUN npm install -g @anthropic-ai/claude-code
+ && rm -rf /var/lib/apt/lists/*
 
 # permission setting for volume
 RUN mkdir -p /home/node/.claude \
@@ -21,3 +22,8 @@ RUN echo "node ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/node \
 
 USER node
 WORKDIR /home/node/
+
+# install Claude Code (native installer, as node user -> auto-updates itself)
+RUN curl -fsSL https://claude.ai/install.sh | bash
+ENV PATH="/home/node/.local/bin:${PATH}"
+
