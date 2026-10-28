@@ -1,13 +1,16 @@
 FROM node:20-bookworm-slim
 
 # curl / ca-certificates はネイティブインストーラの取得に必要
+# jq は status line（claude-config/statusline.sh）が JSON を読むのに、tzdata は TZ の反映に必要
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
     openssh-client \
     git \
+    jq \
     sudo \
+    tzdata \
     vim-tiny \
  && rm -rf /var/lib/apt/lists/*
 
@@ -26,4 +29,3 @@ WORKDIR /home/node/
 # install Claude Code (native installer, as node user -> auto-updates itself)
 RUN curl -fsSL https://claude.ai/install.sh | bash
 ENV PATH="/home/node/.local/bin:${PATH}"
-

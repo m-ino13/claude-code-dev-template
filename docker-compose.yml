@@ -12,6 +12,8 @@ services:
     environment:
       # enable color
       - TERM=xterm-256color
+      # show times (e.g. status line's rate limit reset) in JST
+      - TZ=Asia/Tokyo
     stdin_open: true
     tty: true
     command: sleep infinity

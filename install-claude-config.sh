@@ -37,6 +37,7 @@ fi
 echo "=> claude-config/ を ${DEST} へコピーします"
 cp -r claude-config "$DEST"
 chmod +x "${DEST}/hooks/"*.sh 2>/dev/null || true
+chmod +x "${DEST}/statusline.sh" 2>/dev/null || true
 
 echo "=> ${PROJECT_DIR}/.gitignore に .claude/worktrees/ を追記します"
 GITIGNORE="${PROJECT_DIR}/.gitignore"
